@@ -19,6 +19,16 @@ class _DetailsState extends State<Details> {
       appBar: new AppBar(
         title: new Text("Blog Post Details"),
         backgroundColor: Colors.purple,
+        actions: <Widget>[
+          new IconButton(
+              icon: new Icon(Icons.search),
+              onPressed: ()=>debugPrint("Search")
+          ),
+          new IconButton(
+              icon: new Icon(Icons.add),
+              onPressed: ()=>debugPrint("Add")
+          )
+        ],
       ),
       body: new Card(
         margin: EdgeInsets.all(7.0),
