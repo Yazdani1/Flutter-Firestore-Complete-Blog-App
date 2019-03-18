@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "960494415679",
+    "firebase_url": "https://flutter-bloc-app.firebaseio.com",
+    "project_id": "flutter-bloc-app",
+    "storage_bucket": "flutter-bloc-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:960494415679:android:541a2c0a21c281ba",
+        "android_client_info": {
+          "package_name": "com.ydc.flutterfirestoreblogapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "960494415679-65jtl6o816qhikbt4rmrf00qleurjmlj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEVaPWelKPbWZfGimYOqPIY9HD7cZYfs4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
