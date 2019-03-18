@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:async/async.dart';
+import 'package:flutter_firestore_blogapp/DetailsPage.dart';
 
 class Home extends StatefulWidget {
   @override
@@ -17,7 +18,10 @@ class _HomeState extends State<Home> {
     QuerySnapshot sp=await firestore.collection("posts").getDocuments();
     return sp.documents;
   }
-  
+
+  passData(DocumentSnapshot snap){
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>Details(snap: snap,)));
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,29 +73,35 @@ class _HomeState extends State<Home> {
                             foregroundColor: Colors.white,
                           ),
                           new SizedBox(width: 10.0,),
-                          new Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: <Widget>[
+                             new Container(
+                               width: 200.0,
+                               child: Column(
+                                 crossAxisAlignment: CrossAxisAlignment.start,
+                                 children: <Widget>[
+                                   new InkWell(
+                                     onTap: (){
+                                       passData(snapshot.data[index]);
+                                     },
+                                     child:Text(snapshot.data[index].data["title"],
+                                       maxLines: 1,
+                                       style: TextStyle(fontSize: 23.0,color: Colors.orange),
+                                     ),
+                                   ),
+                                   new Padding(padding: EdgeInsets.all(5.0)),
+                                   new Text(snapshot.data[index].data["content"],
+                                     maxLines: 2,
+                                     style: TextStyle(color: Colors.black,),
+                                   )
 
-                              new Text(snapshot.data[index].data["title"],
-                                maxLines: 2,
-                                style: TextStyle(fontSize: 23.0,color: Colors.orange),
-                              ),
-                              new Padding(padding: EdgeInsets.all(5.0)),
-                              new Text(snapshot.data[index].data["content"],
-                              maxLines: 2,
-                              style: TextStyle(color: Colors.black,),
-                              )
 
+                                 ],
+                               ),
 
-                            ],
-                          ),
-                          new Padding(padding: EdgeInsets.only(left: 10.0)),
+                             ),
+
                              Text("\$"+snapshot.data[index].data["amount"],
                                 style: TextStyle(fontSize: 21.0,color: Colors.orange),
                               )
-
-                          
                         ],
                       ),
                       
