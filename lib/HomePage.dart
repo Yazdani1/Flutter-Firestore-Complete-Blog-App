@@ -41,6 +41,49 @@ class _HomeState extends State<Home> {
           )
         ],
       ),
+      drawer: new Drawer(
+        child: new ListView(
+          children: <Widget>[
+            new UserAccountsDrawerHeader(
+                accountName: new Text("Code With YDC"),
+                accountEmail: new Text("ydc@gmail.com")
+            ),
+            new ListTile(
+              title: new Text("First Page"),
+              leading: new Icon(Icons.search,color: Colors.purple,),
+            ),
+            new ListTile(
+              title: new Text("Second Page"),
+              leading: new Icon(Icons.pages,color: Colors.orange,),
+            ),
+            new ListTile(
+              title: new Text("Third Page"),
+              leading: new Icon(Icons.add,color: Colors.green,),
+            ),
+            new ListTile(
+              title: new Text("Fourth Page"),
+              leading: new Icon(Icons.panorama,color: Colors.redAccent,),
+            ),
+            new ListTile(
+              title: new Text("Fifth Page"),
+              leading: new Icon(Icons.cake,color: Colors.blueAccent,),
+            ),
+            new Divider(
+              height: 10.0,
+              color: Colors.blueAccent,
+            ),
+            new ListTile(
+              title: new Text("Close"),
+              trailing: new Icon(Icons.close),
+              onTap: (){
+                Navigator.of(context).pop();
+              },
+            )
+
+          ],
+        ),
+      ),
+
 
       body: new FutureBuilder(
         future: getAllPost(),

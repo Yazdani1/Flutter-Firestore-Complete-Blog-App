@@ -20,36 +20,6 @@ class _DetailsState extends State<Details> {
         title: new Text("Blog Post Details"),
         backgroundColor: Colors.purple,
       ),
-      drawer: new Drawer(
-        child: new ListView(
-          children: <Widget>[
-            new UserAccountsDrawerHeader(
-                accountName: new Text("Code With YDC"),
-                accountEmail: new Text("ydc@gmail.com")
-            ),
-            new ListTile(
-              title: new Text("First Page"),
-              leading: new Icon(Icons.search,color: Colors.purple,),
-            ),
-            new ListTile(
-              title: new Text("Second Page"),
-              leading: new Icon(Icons.pages,color: Colors.orange,),
-            ),
-            new ListTile(
-              title: new Text("Third Page"),
-              leading: new Icon(Icons.add,color: Colors.green,),
-            ),
-            new ListTile(
-              title: new Text("Fourth Page"),
-              leading: new Icon(Icons.panorama,color: Colors.redAccent,),
-            ),
-            
-
-
-          ],
-        ),
-      ),
-
       body: new Card(
         margin: EdgeInsets.all(7.0),
         elevation: 7.0,
