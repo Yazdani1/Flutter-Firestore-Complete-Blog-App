@@ -59,9 +59,15 @@ class _DetailsState extends State<Details> {
                 ],
               ),
               new SizedBox(height: 10.0,),
+
+              new Image.network(widget.snap.data["image"],
+              height: 150.0,
+                width: MediaQuery.of(context).size.width,
+              ),
               new Text(widget.snap.data["content"],
                 style: TextStyle(fontSize: 19.0,color: Colors.black),
               )
+
 
 
 

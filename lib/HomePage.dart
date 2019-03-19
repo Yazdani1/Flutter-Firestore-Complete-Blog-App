@@ -120,6 +120,7 @@ class _HomeState extends State<Home> {
                                width: 200.0,
                                child: Column(
                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                 mainAxisAlignment: MainAxisAlignment.start,
                                  children: <Widget>[
                                    new InkWell(
                                      onTap: (){
@@ -134,8 +135,12 @@ class _HomeState extends State<Home> {
                                    new Text(snapshot.data[index].data["content"],
                                      maxLines: 2,
                                      style: TextStyle(color: Colors.black,),
+                                   ),
+                                   new SizedBox(height: 10.0,),
+                                   new Image.network(snapshot.data[index].data["image"],
+                                     height: 100.0,
+                                     width: 200.0,
                                    )
-
 
                                  ],
                                ),
