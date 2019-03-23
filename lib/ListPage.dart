@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'ListPageDetails.dart';
 
 class ListPage extends StatefulWidget {
   @override
@@ -8,13 +11,28 @@ class ListPage extends StatefulWidget {
 
 class _ListPageState extends State<ListPage> {
 
-  StreamBuilder<QuerySnapshot>streamBuilder;
+  StreamSubscription<QuerySnapshot>subscription;
 
   List<DocumentSnapshot>snapshot;
 
   final CollectionReference collectionReference=Firestore.instance.collection("All Post");
 
 
+  @override
+  void initState() {
+    super.initState();
+
+    subscription=collectionReference.snapshots().listen((datasnapshot){
+      setState(() {
+        snapshot=datasnapshot.documents;
+      });
+    });
+
+  }
+
+  listPage(DocumentSnapshot snap){
+    Navigator.of(context).push(new MaterialPageRoute(builder: (context)=>ListPageDetails(snapshot: snap,)));
+  }
 
 
   @override
@@ -76,6 +94,67 @@ class _ListPageState extends State<ListPage> {
 
           ],
         ),
+      ),//end drawer..
+
+      body: new ListView.builder(
+          itemCount: snapshot.length,
+          itemBuilder: (context,index){
+
+            return Card(
+              elevation: 10.0,
+              margin: EdgeInsets.all(10.0),
+              child: new Container(
+                width: MediaQuery.of(context).size.width,
+                padding: EdgeInsets.all(10.0),
+
+                child: new Row(
+                  children: <Widget>[
+
+                    new CircleAvatar(
+                      child: new Text(snapshot[index].data["title"][0]),
+                      backgroundColor: Colors.redAccent,
+                      foregroundColor: Colors.white,
+                    ),
+
+                    new Container(
+                      width: 250.0,
+                      padding: EdgeInsets.all(10.0),
+                      child: new Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: <Widget>[
+
+                          new InkWell(
+                            child: new Text(snapshot[index].data["title"],
+                              maxLines: 1,
+                              style: TextStyle(fontSize: 20.0,color: Colors.green),
+                            ),
+
+                            onTap: (){
+                              listPage(snapshot[index]);
+                            },
+
+                          ),
+
+                          new Padding(padding: EdgeInsets.all(5.0)),
+
+                          new Text(snapshot[index].data["content"],
+                          maxLines: 2,
+
+                          style: TextStyle(fontSize: 17.0,color: Colors.blue),
+                          )
+
+                        ],
+                      ),
+                    )
+
+
+                  ],
+                ),
+
+              ),
+            );
+
+          }
       ),
 
 
